@@ -40,3 +40,46 @@ int main() {
     }
 
 }
+
+
+//continue
+#include <iostream>
+
+using namespace std;
+
+struct buyer_t {
+    int id;
+    string name;
+    string SendDest;
+    string buy;
+};
+
+int main() {
+    system("cls");
+
+    cout << "=====================================\n";
+    cout << "*- Daftar Pembeli Sapi Qurban 2022 -*\n";
+    cout << "=====================================\n\n";
+
+    int CodeAnimal = 4;
+
+    buyer_t buyer[] = {
+        {1, "1. Jon", "Subang", "Sapi"},
+        {2, "2. Naz", "Garut", "Sapi"},
+        {3, "3. Dion", "Bandung", "Sapi"},
+        {4, "4. Elba", "Kuningan", "Kambing"},
+        {5, "5. Aziz", "Depok", "Sapi"},
+        {6, "6. Shar", "Boyolali", "Sapi"},
+        {7, "7. Jae", "Medan", "Sapi"},
+    };
+
+    for (int i = 0; i < 7; i++){
+        if (buyer[i].id == CodeAnimal){
+            cout << buyer[i].name << ", Beliau tidak beli Sapi, silahkan pisah!\n";
+            continue;
+        }
+
+        cout << buyer[i].name << ", Beliau beli " << buyer[i].buy << " silahkan kirim ke " << buyer[i].SendDest << "\n";
+    }    
+
+}
