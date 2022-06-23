@@ -3,7 +3,9 @@
 #include <cstdlib>
 #include <windows.h>
 #include <time.h>
+//#include "color.hpp"
 using namespace std;
+
 
 // Define Hero Structure
 struct Hero {
@@ -55,8 +57,11 @@ int main()
 {
     // Variabel Declaration
     char movement = ' ';
+    char movementt = ' ';
     int playerY = 8;
     int playerX = 1;
+    int playY = 1;
+    int playX = 8;
 
     // Hero Object
     Hero player;
@@ -81,6 +86,14 @@ int main()
                 if (y == playerY && x == playerX)
                 {
                     cout << '@' << " ";
+                }
+                else
+                {
+                    cout << map[y][x] << " ";
+                }
+                if (y == playY && x == playX)
+                {
+                    cout << '%' << " ";
                 }
                 else
                 {
@@ -111,6 +124,41 @@ int main()
             playerX++;
         }
         else if (movement == 'e')
+        {
+            char input_keluar;
+            cout << "Mau keluar?" << endl;
+            cout << "input (y/n): ";
+            input_keluar = getch();
+
+            if (input_keluar == 'y')
+            {
+                break;
+            }
+            else
+            {
+                continue;
+            }
+        }
+
+        //play2
+        char movementt = getch();
+        if (movementt == 'i' && playY > 0)
+        {
+            playY--;
+        }
+        else if (movementt == 'k' && playY < mapY - 1)
+        {
+            playY++;
+        }
+        else if (movementt == 'j' && playX > 0)
+        {
+            playX--;
+        }
+        else if (movementt == 'l' && playX < mapX - 1)
+        {
+            playX++;
+        }
+        else if (movementt == 'e')
         {
             char input_keluar;
             cout << "Mau keluar?" << endl;
