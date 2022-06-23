@@ -8,7 +8,7 @@ using namespace std;
 
 
 // Define Hero Structure
-struct Hero {
+struct Hero1 {
     string name;
     int hp;
     int atk;
@@ -26,6 +26,25 @@ struct Hero {
         *pokemon_hp = *pokemon_hp - (atk * 2);
     }
 };
+
+/*struct Hero2 {
+    string name;
+    int hp;
+    int atk;
+    int def;
+
+    void basicAttack(int *pokemon_hp)
+    {
+        cout << "Basic Attack!" << endl;
+        *pokemon_hp = *pokemon_hp - atk;
+    }
+
+    void FullPowerAttack(int *pokemon_hp)
+    {
+        cout << "Full Power Attack!" << endl;
+        *pokemon_hp = *pokemon_hp - (atk * 2);
+    }
+};*/
 
 // Define Pokemon Structure
 struct Pokemon {
@@ -64,8 +83,14 @@ int main()
     int playX = 8;
 
     // Hero Object
-    Hero player;
+    Hero1 player;
     player.name = "Player 1";
+    player.hp = 100;
+    player.atk = 10;
+    player.def = 5;
+
+    Hero2  play;
+    player.name = "Player 2";
     player.hp = 100;
     player.atk = 10;
     player.def = 5;
@@ -241,7 +266,7 @@ int main()
                     cout << "Ketemu " << pokemon_1.name << endl;
                     cout << "Player HP: " << player.hp << endl;
                     cout << "Pokemon HP: " << pokemon_1.hp << endl;
-                    cout << "Klik tombol Q untuk basic attack!";
+                    cout << "Klik tombol Q untuk basic attack!\n";
                     cout << "Klik tombol E untuk Full Power attack!\n";
                     cout << "Input : ";
                      input_battle = getch();
@@ -270,10 +295,136 @@ int main()
                     cout << "Ketemu " << pokemon_2.name << endl;
                     cout << "Player HP: " << player.hp << endl;
                     cout << "Pokemon HP: " << pokemon_2.hp << endl;
-                    cout << "Klik tombol Q untuk basic attack!";
+                    cout << "Klik tombol Q untuk basic attack!\n";
                     cout << "Klik tombol E untuk Full Power attack!\n";
                     cout << "Input : ";
                      input_battle = getch();
+
+                    if (input_battle == 'q')
+                    {
+                        player.basicAttack(&pokemon_1.hp);
+                    }
+
+                    if (input_battle == 'e')
+                    {
+                        player.FullPowerAttack(&pokemon_1.hp);
+                    }
+
+                    if (pokemon_1.hp <= 0)
+                    {
+                        map[playerY][playerX] = '.';
+                        break;
+                    }
+                }
+                else if (random == 2) // Gak ketemu apa2
+                {
+                    break;
+                }
+            }
+        }
+
+    //Cek For Bettle Play
+    srand(time(NULL));
+        int random = rand() % 3; // 0 1 2
+
+    if (map[playerY][playerX] == 'M')
+        {
+            Pokemon pokemon_1;
+            pokemon_1.name = "Pikachu";
+            pokemon_1.hp = 150;
+            pokemon_1.atk = 10;
+            pokemon_1.def = 5;
+
+            // Battle Loop
+            while (true)
+            {
+                system("cls");
+                char input_battle = ' ';
+                cout << "Battle!" << endl;
+                cout << "Player HP: " << player.hp << endl;
+                cout << "Pokemon HP: " << pokemon_1.hp << endl;
+                cout << "Klik tombol Q untuk basic attack!\n";
+                cout << "Klik tombol E untuk Full Power attack!\n";
+                cout << "Input : ";
+                input_battle = getch();
+
+                if (input_battle == 'q')
+                {
+                    player.basicAttack(&pokemon_1.hp);
+                }
+
+                if (input_battle == 'e')
+                {
+                    player.FullPowerAttack(&pokemon_1.hp);
+                }
+
+                if (pokemon_1.hp <= 0)
+                {
+                    map[playerY][playerX] = '.';
+                    break;
+                }
+            }
+        }
+        else if (map[playerY][playerX] == '#')
+        {
+            Pokemon pokemon_1;
+            pokemon_1.name = "Pikachu";
+            pokemon_1.hp = 100;
+            pokemon_1.atk = 10;
+            pokemon_1.def = 5;
+
+            Pokemon pokemon_2;
+            pokemon_2.name = "Bulbasaur";
+            pokemon_2.hp = 150;
+            pokemon_2.atk = 10;
+            pokemon_2.def = 5;
+
+            srand(time(NULL));
+            int random = rand() % 3; // 0 1 2
+
+            while (true)
+            {
+                if (random == 0) // Ketemu pikachu
+                {
+                    system("cls");
+                    char input_battle = ' ';
+                    cout << "Battle!" << endl;
+                    cout << "Ketemu " << pokemon_1.name << endl;
+                    cout << "Player HP: " << player.hp << endl;
+                    cout << "Pokemon HP: " << pokemon_1.hp << endl;
+                    cout << "Klik tombol Q untuk basic attack!\n";
+                    cout << "Klik tombol E untuk Full Power attack!\n";
+                    cout << "Input : ";
+                    input_battle = getch();
+
+                    if (input_battle == 'q')
+                    {
+                        player.basicAttack(&pokemon_1.hp);
+                    }
+
+                    if (input_battle == 'e')
+                    {
+                        player.FullPowerAttack(&pokemon_1.hp);
+                    }
+
+                    if (pokemon_1.hp <= 0)
+                    {
+                        map[playerY][playerX] = '.';
+                        break;
+                    }
+                }
+                else if (random == 1) // Ketemu bulbasaur
+                {
+                    system("cls");
+                    char input_battle = ' ';
+                    cout << "Battle!" << endl;
+                    cout << "Ketemu " << pokemon_2.name << endl;
+                    cout << "Player HP: " << player.hp << endl;
+                    cout << "Pokemon HP: " << pokemon_2.hp << endl;
+                    cout << "Klik tombol Q untuk basic attack!\n";
+                    cout << "Klik tombol E untuk Full Power attack!\n";
+                    cout << "Input : ";
+                    input_battle = getch();
 
                     if (input_battle == 'q')
                     {
