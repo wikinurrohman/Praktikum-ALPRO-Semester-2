@@ -242,15 +242,23 @@ int main()
                     cout << "Player HP: " << player.hp << endl;
                     cout << "Pokemon HP: " << pokemon_1.hp << endl;
                     cout << "Klik tombol Q untuk basic attack!";
-                    input_battle = getch();
+                    cout << "Klik tombol E untuk Full Power attack!\n";
+                    cout << "Input : ";
+                     input_battle = getch();
 
                     if (input_battle == 'q')
                     {
                         player.basicAttack(&pokemon_1.hp);
                     }
 
+                    if (input_battle == 'e')
+                    {
+                        player.FullPowerAttack(&pokemon_1.hp);
+                    }
+
                     if (pokemon_1.hp <= 0)
                     {
+                        map[playerY][playerX] = '.';
                         break;
                     }
                 }
@@ -263,15 +271,23 @@ int main()
                     cout << "Player HP: " << player.hp << endl;
                     cout << "Pokemon HP: " << pokemon_2.hp << endl;
                     cout << "Klik tombol Q untuk basic attack!";
-                    input_battle = getch();
+                    cout << "Klik tombol E untuk Full Power attack!\n";
+                    cout << "Input : ";
+                     input_battle = getch();
 
                     if (input_battle == 'q')
                     {
-                        player.basicAttack(&pokemon_2.hp);
+                        player.basicAttack(&pokemon_1.hp);
                     }
 
-                    if (pokemon_2.hp <= 0)
+                    if (input_battle == 'e')
                     {
+                        player.FullPowerAttack(&pokemon_1.hp);
+                    }
+
+                    if (pokemon_1.hp <= 0)
+                    {
+                        map[playerY][playerX] = '.';
                         break;
                     }
                 }
