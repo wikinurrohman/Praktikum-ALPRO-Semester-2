@@ -3,8 +3,6 @@
 #include "color.hpp"
 using namespace std;
 
-//DEFINISI 
-
 // DEFINISI INPUT KEYBORD
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -42,7 +40,7 @@ struct wayang {
 
     void basic_atk(int *hp_obj, int *def_obj) {
         int damage = (atk * 2) - *def_obj;
-        cout << "Kamu Bertemu Musuh!\n"; 
+        cout << "Kamu Bertemu Musuh!\n";
         cout << "Kerusakan musuh " << dye::yellow(damage) << " menggunakan serangan standar!\n";
         *hp_obj -= damage;
     }
@@ -77,7 +75,7 @@ int main() {
     int middle_map = map_size / 2;
     int player_x = middle_map;
     int player_y = map_size - 1;
-    char map[map_size][map_size];   
+    char map[map_size][map_size];
 
     wayang player;
     musuh captainA;
@@ -85,13 +83,13 @@ int main() {
     musuh batman;
 
     cout << dye::red(R"(
-         (                     )                (                                )             )          
-   (     )\ )               ( /(       )        )\ )       (  (       (       ( /(   (      ( /(  (       
-   )\   (()/(  (   (   (    )\())` )  /(    (  (()/( (     )\))(   '  )\      )\())  )\     )\()) )\ )    
-((((_)(  /(_)) )\  )\  )\  ((_)\  ( )(_))   )\  /(_)))\   ((_)()\ )((((_)(   ((_)\((((_)(  ((_)\ (()/(    
- )\ _ )\(_))_ ((_)((_)((_)  _((_)(_(_()) _ ((_)(_)) ((_)  _(())\_)())\ _ )\ __ ((_))\ _ )\  _((_) /(_))_  
- (_)_\(_)|   \\ \ / / | __|| \| ||_   _|| | | || _ \| __| \ \((_)/ /(_)_\(_)\ \ / /(_)_\(_)| \| |(_)) __| 
-  / _ \  | |) |\ V /  | _| | .` |  | |  | |_| ||   /| _|   \ \/\/ /  / _ \   \ V /  / _ \  | .` |  | (_ | 
+         (                     )                (                                )             )
+   (     )\ )               ( /(       )        )\ )       (  (       (       ( /(   (      ( /(  (
+   )\   (()/(  (   (   (    )\())` )  /(    (  (()/( (     )\))(   '  )\      )\())  )\     )\()) )\ )
+((((_)(  /(_)) )\  )\  )\  ((_)\  ( )(_))   )\  /(_)))\   ((_)()\ )((((_)(   ((_)\((((_)(  ((_)\ (()/(
+ )\ _ )\(_))_ ((_)((_)((_)  _((_)(_(_()) _ ((_)(_)) ((_)  _(())\_)())\ _ )\ __ ((_))\ _ )\  _((_) /(_))_
+ (_)_\(_)|   \\ \ / / | __|| \| ||_   _|| | | || _ \| __| \ \((_)/ /(_)_\(_)\ \ / /(_)_\(_)| \| |(_)) __|
+  / _ \  | |) |\ V /  | _| | .` |  | |  | |_| ||   /| _|   \ \/\/ /  / _ \   \ V /  / _ \  | .` |  | (_ |
  /_/ \_\ |___/  \_/   |___||_|\_|  |_|   \___/ |_|_\|___|   \_/\_/  /_/ \_\   |_|  /_/ \_\ |_|\_|   \___| )");
     cout << dye::grey("\nGame ini adalah sebuah petualangan pencarian musuh, musuh berada disekitar Anda maka hati hati setiap langkah Anda!\n");
     cout << "\n\n\t\t\t\t\tMasukan nama pemain Anda: ";
@@ -158,7 +156,7 @@ int main() {
 
     while (true) {
         system("cls");
-    //player_move:
+    //goto player_move:
     player_move:
         // PRINT MAP
         cout << "\nWayang berada di x: " << player_x << ", di y: " << player_y << endl;
@@ -191,7 +189,7 @@ int main() {
         cout << "Input: ";
         input_key = getch();
 
-        // PLAYER MOVEMENT
+        // PERGERAKAN PEmAIN
         if (input_key == KEY_UP && player_y > 0) {
             if (map[player_y - 1][player_x] == 'W') {
                 cout << "Tidak bisa bergerak ke atas!\n";
@@ -250,7 +248,7 @@ int main() {
                 cout << "Input: ";
                 input_key = getch();
 
-                // PLAYER MOVEMENT D
+                // PERGERAKAN PEMAIN DI SOURCE CODE D
                 if (input_key == KEY_UP && player_y > 0) {
                     if (map[player_y - 1][player_x] == 'W') {
                         cout << "Tidak bisa bergerak ke atas!\n";
@@ -277,7 +275,7 @@ int main() {
                     }
                 }
             }
-            
+
              else {
                 cout << "\nStatus Wayang Anda:\n";
                 cout << "Name   : " << player.username << endl;
@@ -294,7 +292,7 @@ int main() {
             break;
         }
 
-        // MONSTER FIGHT
+        // MUSUH FIGHT
         if (map[player_y][player_x] == 'O') {
             captainA.musuh_name = "Captain Amerika";
             captainA.hp = 150;
@@ -429,7 +427,7 @@ int main() {
             }
         }
 
-        // CHECK IF PLAYER IS ON A TREASURE
+        // PERIKSA APAKAH MENDAPATKAN SAKTI MILIK
         if (map[player_y][player_x] == 'T') {
             cout << dye::green("\nAnda menemukan Sakti Milik!");
             player.gold = player.gold + rand() % 1000 + 1;
@@ -441,4 +439,4 @@ int main() {
     }
 
     return 0;
-} 
+}
